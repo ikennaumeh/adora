@@ -1,4 +1,4 @@
-import 'package:adora/ui/views/home/home_view.dart';
+import 'package:adora/ui/views/wrapper/wrapper_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

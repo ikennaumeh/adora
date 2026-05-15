@@ -1,0 +1,1 @@
+enum LocationError { permissionDenied, permissionPermanentlyDenied, serviceDisabled, unknown }
