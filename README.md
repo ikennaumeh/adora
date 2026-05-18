@@ -4,6 +4,26 @@ A Flutter application built as a hiring assessment. The app demonstrates foregro
 
 ---
 
+## Screenshots
+
+| Live Screen (Tracking Active) | Live Screen (Tracking Inactive) | Logs Screen |
+|---|---|---|
+| ![Live Active](screenshots/live_active.jpeg) | ![Live Inactive](screenshots/live_inactive.jpeg) | ![Logs](screenshots/logs.jpeg) |
+ 
+---
+
+## Download
+
+> **Debug APK (Android)**
+> [Download from Google Drive](https://drive.google.com/file/d/1RqSiEoCjZ8FM8P9HXdrELVHTOcKflQ2c/view?usp=drive_link)
+
+Install steps:
+1. Download the APK from the link above
+2. On your Android device, enable **Install from unknown sources** in Settings
+3. Open the downloaded APK and install
+
+---
+
 ## Features
 
 - **Foreground location** — fetches and displays the current device location with accurate GPS coordinates
