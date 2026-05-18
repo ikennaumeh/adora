@@ -6,8 +6,8 @@ A Flutter application built as a hiring assessment. The app demonstrates foregro
 
 ## Screenshots
 
-| Live Screen (Tracking Active) | Live Screen (Tracking Inactive) | Logs Screen |
-|---|---|---|
+| Live Screen (Tracking Active)                | Live Screen (Tracking Inactive)                  | Logs Screen                    |
+|----------------------------------------------|--------------------------------------------------|--------------------------------|
 | ![Live Active](screenshots/live_active.jpeg) | ![Live Inactive](screenshots/live_inactive.jpeg) | ![Logs](screenshots/logs.jpeg) |
  
 ---
@@ -140,11 +140,6 @@ flutter run
 ## Known Limitations
 
 - `flutter_background_geolocation` requires a paid license for **release builds** on Android. Debug builds work without one. See [transistorsoft.com](https://transistorsoft.com) for licensing.
-- Location history is stored in `shared_preferences` and is not designed for indefinite accumulation. The list is capped at 100 entries.
 - Terminated state tracking on iOS relies on significant location change monitoring, which may have longer intervals between updates than Android depending on device conditions.
 
 ---
-
-## License
-
-This project was built as a technical assessment and is not licensed for production use.
