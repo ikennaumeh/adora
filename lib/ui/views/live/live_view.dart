@@ -1,4 +1,4 @@
-import 'package:adora/ui/enums/location_error.dart';
+import 'package:adora/enums/location_error.dart';
 import 'package:adora/ui/views/live/live_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,8 +10,11 @@ class LiveView extends ConsumerStatefulWidget {
   ConsumerState<LiveView> createState() => _LiveViewState();
 }
 
-class _LiveViewState extends ConsumerState<LiveView> with WidgetsBindingObserver {
+class _LiveViewState extends ConsumerState<LiveView> with WidgetsBindingObserver, AutomaticKeepAliveClientMixin  {
   bool _openedSettings = false;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -39,6 +42,8 @@ class _LiveViewState extends ConsumerState<LiveView> with WidgetsBindingObserver
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     final state = ref.watch(liveProvider);
     final vm = ref.read(liveProvider.notifier);
 
@@ -86,6 +91,7 @@ class _LiveViewState extends ConsumerState<LiveView> with WidgetsBindingObserver
                           : "Try Again",
                     ),
                   ),
+
                 ],
               ),
             );
@@ -112,6 +118,42 @@ class _LiveViewState extends ConsumerState<LiveView> with WidgetsBindingObserver
                     onPressed: vm.getLiveLocation,
                     child: Text(
                         "Reload"
+                    ),
+                  ),
+
+                  SizedBox(height: 10,),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Background Tracking",
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            Text(
+                              state.isBackgroundTracking ? "Active 🟢" : "Inactive 🔴",
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
+                          ],
+                        ),
+                        state.isTrackingLoading
+                            ? const SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: CircularProgressIndicator.adaptive(strokeWidth: 2),
+                        )
+                        : ElevatedButton(
+                            onPressed: vm.toggleBackgroundTracking,
+                            child: Text(
+                                state.isBackgroundTracking ? "Stop" : "Start"
+                            ),
+                        )
+                      ],
                     ),
                   ),
                 ],

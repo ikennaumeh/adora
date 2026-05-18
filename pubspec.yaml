@@ -15,6 +15,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_riverpod: ^3.3.1
   geolocator: ^14.0.2
+  flutter_background_geolocation: ^5.2.0
+  shared_preferences: ^2.5.3
+  jiffy: ^6.4.4
 
 dev_dependencies:
   flutter_test:

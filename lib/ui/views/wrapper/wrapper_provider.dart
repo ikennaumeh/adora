@@ -1,17 +1,7 @@
+import 'package:adora/ui/views/logs/logs_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-class WrapperState{
-  final int currentIndex;
-
-  WrapperState({required this.currentIndex});
-
-  WrapperState copyWith({int? currentIndex}){
-    return WrapperState(
-        currentIndex: currentIndex ?? this.currentIndex,
-    );
-  }
-}
+import 'wrapper_state.dart';
 
 final wrapperProvider = NotifierProvider<WrapperNotifier, WrapperState>(WrapperNotifier.new);
 
@@ -30,12 +20,21 @@ class WrapperNotifier extends Notifier<WrapperState>{
 
   void initialize() {
     controller.addListener(() {
-      state = state.copyWith(currentIndex: controller.page!.toInt());
+      final page = controller.page!.toInt();
+
+      state = state.copyWith(currentIndex: page);
+      if (page == 1) {
+        ref.read(logsProvider.notifier).fetchRecords();
+      }
     });
   }
 
   void setPageController(int value) {
     controller.jumpToPage(value);
     state = state.copyWith(currentIndex: value);
+
+    if (value == 1) {
+      ref.read(logsProvider.notifier).fetchRecords();
+    }
   }
 }

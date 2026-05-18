@@ -1,14 +1,29 @@
+import 'package:adora/services/background_location_service.dart';
 import 'package:adora/ui/views/live/live_view.dart';
 import 'package:adora/ui/views/logs/logs_view.dart';
 import 'package:adora/ui/views/wrapper/wrapper_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class WrapperView extends ConsumerWidget {
+class WrapperView extends ConsumerStatefulWidget {
   const WrapperView({super.key});
 
   @override
-  Widget build(BuildContext context, ref) {
+  ConsumerState<WrapperView> createState() => _WrapperViewState();
+}
+
+class _WrapperViewState extends ConsumerState<WrapperView> {
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await ref.read(bgLocationProvider).initialize();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final vm = ref.read(wrapperProvider.notifier);
     final state = ref.watch(wrapperProvider);
 

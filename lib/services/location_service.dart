@@ -3,6 +3,7 @@ import 'package:geolocator/geolocator.dart';
 
 final locationProvider = Provider<LocationService>((_) => LocationService());
 
+/// Service responsible for handling foreground location access.
 final class LocationService {
 
   /// Determine the current position of the device.

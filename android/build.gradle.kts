@@ -19,3 +19,6 @@ subprojects {
 tasks.register<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
 }
+
+ext["playServicesLocationVersion"] = "21.3.0"
+ext["tslocationmanagerVersion"]    = "4.0.+"
